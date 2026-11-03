@@ -11,7 +11,7 @@ Blitzload splits every file across multiple connections, so it downloads faster,
 [![All releases](https://img.shields.io/badge/All-Releases-181818?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Zruxr2/Blitzloader-Download-Manager/releases)
 [![Report a bug](https://img.shields.io/badge/Report-A_Bug-d6334a?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Zruxr2/Blitzloader-Download-Manager/issues/new)
 
-[![Tests](https://github.com/Zruxr2/Blitzloader-Download-Manager/actions/workflows/test.yml/badge.svg)](https://github.com/Zruxr2/Blitzloader-Download-Manager/actions/workflows/test.yml)
+[![Tests](https://github.com/Zruxr2/Blitzloader-Download-Manager/.github/workflows/test.yml/badge.svg)](https://github.com/Zruxr2/Blitzloader-Download-Manager/.github/workflows/test.yml)
 ![Platforms](https://img.shields.io/badge/Windows%20%7C%20macOS%20%7C%20Linux-181818)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
