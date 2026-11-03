@@ -7,11 +7,11 @@
 **Stop waiting on slow downloads.**
 Blitzload splits every file across multiple connections, so it downloads faster, resumes where it left off, and never loses your progress.
 
-[![Download latest release](https://img.shields.io/badge/Download-Latest_Release-2f6bff?style=for-the-badge&logo=github&logoColor=white)](https://github.com/YOUR-USERNAME/blitzload/releases/latest)
-[![All releases](https://img.shields.io/badge/All-Releases-181818?style=for-the-badge&logo=github&logoColor=white)](https://github.com/YOUR-USERNAME/blitzload/releases)
-[![Report a bug](https://img.shields.io/badge/Report-A_Bug-d6334a?style=for-the-badge&logo=github&logoColor=white)](https://github.com/YOUR-USERNAME/blitzload/issues/new)
+[![Download latest release](https://img.shields.io/badge/Download-Latest_Release-2f6bff?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Zruxr2/blitzload/releases/latest)
+[![All releases](https://img.shields.io/badge/All-Releases-181818?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Zruxr2/blitzload/releases)
+[![Report a bug](https://img.shields.io/badge/Report-A_Bug-d6334a?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Zruxr2/blitzload/issues/new)
 
-[![Tests](https://github.com/YOUR-USERNAME/blitzload/actions/workflows/test.yml/badge.svg)](https://github.com/YOUR-USERNAME/blitzload/actions/workflows/test.yml)
+[![Tests](https://github.com/Zruxr2/blitzload/actions/workflows/test.yml/badge.svg)](https://github.com/Zruxr2/blitzload/actions/workflows/test.yml)
 ![Platforms](https://img.shields.io/badge/Windows%20%7C%20macOS%20%7C%20Linux-181818)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
@@ -38,7 +38,7 @@ Many servers limit how fast a single connection can go. Blitzload opens several 
 
 ## Get it
 
-1. Go to the **[latest release](https://github.com/YOUR-USERNAME/blitzload/releases/latest)**.
+1. Go to the **[latest release](https://github.com/Zruxr2/blitzload/releases/latest)**.
 2. Download the installer for your system:
    - **Windows:** the `.exe` installer
    - **macOS:** the `.dmg`
@@ -68,7 +68,7 @@ Some servers don't allow downloading in parts. Blitzload still downloads those f
 You need [Node.js](https://nodejs.org) 18 or newer.
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/blitzload.git
+git clone https://github.com/Zruxr2/blitzload.git
 cd blitzload
 npm install
 npm start
@@ -100,7 +100,7 @@ test/                 Tests that run the engine against a local test server
 
 ## Contributing
 
-Found a bug or have an idea? [Open an issue](https://github.com/YOUR-USERNAME/blitzload/issues/new). Pull requests are welcome. Please run `npm test` first.
+Found a bug or have an idea? [Open an issue](https://github.com/Zruxr2/blitzload/issues/new). Pull requests are welcome. Please run `npm test` first.
 
 ## Roadmap
 

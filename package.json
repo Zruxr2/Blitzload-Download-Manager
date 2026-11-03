@@ -48,13 +48,13 @@
     }
   },
   "author": "Blitzload contributors",
-  "homepage": "https://github.com/YOUR-USERNAME/blitzload#readme",
+  "homepage": "https://github.com/Zruxr2/blitzload#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/YOUR-USERNAME/blitzload.git"
+    "url": "git+https://github.com/Zruxr2/blitzload.git"
   },
   "bugs": {
-    "url": "https://github.com/YOUR-USERNAME/blitzload/issues"
+    "url": "https://github.com/Zruxr2/blitzload/issues"
   },
   "keywords": [
     "download-manager",
