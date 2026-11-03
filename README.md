@@ -1,65 +1,116 @@
+<div align="center">
+
+<img src="assets/icon.png" alt="Blitzload" width="110">
+
 # Blitzload
 
-A fast desktop download manager (Electron, Node.js) with multi-connection downloads, pause and resume, and a queue.
+**Stop waiting on slow downloads.**
+Blitzload splits every file across multiple connections, so it downloads faster, resumes where it left off, and never loses your progress.
 
-![Blitzload main window](docs/screenshot.png)
+[![Download latest release](https://img.shields.io/badge/Download-Latest_Release-2f6bff?style=for-the-badge&logo=github&logoColor=white)](https://github.com/YOUR-USERNAME/blitzload/releases/latest)
+[![All releases](https://img.shields.io/badge/All-Releases-181818?style=for-the-badge&logo=github&logoColor=white)](https://github.com/YOUR-USERNAME/blitzload/releases)
+[![Report a bug](https://img.shields.io/badge/Report-A_Bug-d6334a?style=for-the-badge&logo=github&logoColor=white)](https://github.com/YOUR-USERNAME/blitzload/issues/new)
 
-## Run it
+[![Tests](https://github.com/YOUR-USERNAME/blitzload/actions/workflows/test.yml/badge.svg)](https://github.com/YOUR-USERNAME/blitzload/actions/workflows/test.yml)
+![Platforms](https://img.shields.io/badge/Windows%20%7C%20macOS%20%7C%20Linux-181818)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+<br>
+
+<img src="docs/screenshot.png" alt="Blitzload main window" width="860">
+
+</div>
+
+<br>
+
+## Why Blitzload
+
+Many servers limit how fast a single connection can go. Blitzload opens several at once and downloads different parts of the file at the same time, then joins them back together. The same file, often much sooner.
+
+- **Multi-connection downloads.** Up to 32 connections per file. When one finishes early it takes over half of the biggest part left, so nothing sits idle until the very end.
+- **Pause and resume that actually works.** Close the app, restart your computer, come back tomorrow. Your download carries on from where it stopped. If the file on the server changed in the meantime, Blitzload starts that one fresh instead of giving you a broken file.
+- **A real queue.** Add as many downloads as you like and choose how many run at once. The rest wait their turn.
+- **You stay in control of your bandwidth.** Set a speed limit in KB/s or MB/s so downloads don't take over your connection.
+- **Survives bad connections.** Dropped connections are retried automatically with backoff.
+- **Checks your files.** Paste a checksum (MD5, SHA-1, SHA-256 or SHA-512) and Blitzload tells you if the finished file matches.
+- **Never overwrites.** If a file with that name already exists, you get `name (1).ext`.
+- **Dark and easy on the eyes.** Each download's bar shows every connection filling its own slice of the file, so you can see the speed-up happening.
+
+## Get it
+
+1. Go to the **[latest release](https://github.com/YOUR-USERNAME/blitzload/releases/latest)**.
+2. Download the installer for your system:
+   - **Windows:** the `.exe` installer
+   - **macOS:** the `.dmg`
+   - **Linux:** the `.AppImage` or `.deb`
+3. Run it.
+
+> Installers are not code-signed yet, so Windows or macOS may show a warning the first time you open Blitzload. On Windows choose **More info**, then **Run anyway**. On macOS right-click the app and choose **Open**.
+
+## Using it
+
+Paste or drop a link anywhere in the Blitzload window, or click **Add download** and paste one or more links. Blitzload picks up the file name and size from the server and starts downloading. Use the buttons on each download to pause, resume, open the file, show it in its folder, or remove it.
+
+Open **Settings** (the gear icon) to change:
+
+| Setting | What it does |
+| --- | --- |
+| Connections per download | More connections means more parts at once. 8 to 16 works well for most servers. |
+| Downloads at the same time | How many files download together before the rest queue. |
+| Speed limit | Cap total download speed. 0 means no limit. |
+| Retries after an error | How many times to retry a dropped connection. |
+| Continue on startup | Pick unfinished downloads back up when Blitzload opens. |
+
+Some servers don't allow downloading in parts. Blitzload still downloads those files, on a single connection, and tells you if a download can't be resumed.
+
+## Run it from source
+
+You need [Node.js](https://nodejs.org) 18 or newer.
 
 ```bash
+git clone https://github.com/YOUR-USERNAME/blitzload.git
+cd blitzload
 npm install
 npm start
 ```
 
-Needs Node 18 or newer. `npm install` downloads Electron (about 100 MB).
-
-## Build an installer
+Build an installer for your system:
 
 ```bash
 npm run dist
 ```
 
-Produces an installer for the OS you run it on (Windows NSIS, macOS DMG, Linux AppImage and deb) in `dist/`.
-Pushing a tag such as `v1.0.0` builds all three on GitHub and attaches them to a release (see `.github/workflows/release.yml`). Builds are unsigned, so Windows and macOS will show a warning on first launch.
-
-## Tests
+Run the tests:
 
 ```bash
 npm test
 ```
 
-## How you add downloads
+Pushing a tag such as `v1.0.0` makes GitHub build the Windows, macOS and Linux installers and attach them to a release automatically.
 
-Paste or drop a link anywhere in the window, or choose **Add download** and paste one or more links. Blitzload does not yet capture downloads from your browser.
-
-## What it does
-
-- **Faster downloads.** Each file is split into parts fetched over several connections at once (default 8, up to 32). When a connection finishes early, it takes half of the biggest remaining part, so every connection stays busy until the end.
-- **Pause and resume.** Progress is saved per part. You can pause, close the app, reboot, and carry on later. If the server's file has changed since, Blitzload starts that download again instead of corrupting it.
-- **Queue.** Choose how many downloads run at once. The rest wait their turn.
-- **Speed limit** across all downloads, in KB/s or MB/s.
-- **Retries** with backoff when a connection drops.
-- **Checksum check** (MD5, SHA-1, SHA-256, SHA-512) when you supply a hash.
-- **File names** come from the server (Content-Disposition) or the link. Existing files are never overwritten.
-- Paste or drop a link anywhere in the window to add it. Desktop notification when a download finishes.
-
-Servers that do not support byte ranges are downloaded on a single connection and restart from zero if paused. Blitzload tells you when that applies.
-
-## Layout
+## How it's built
 
 ```
-main.js, preload.js   Electron shell and safe bridge to the UI
-src/engine.js         Download engine (segments, resume, limiter, checksums)
-src/manager.js        Queue, settings, saving state to disk
-renderer/             The window (HTML, CSS, JS)
-test/                 npm test: runs the engine against a local test server
+main.js, preload.js   Electron shell and the safe bridge to the window
+src/engine.js         Download engine: parts, resume, speed limit, checksums
+src/manager.js        Queue, settings, and saving state to disk
+renderer/             The window (HTML, CSS, JavaScript)
+test/                 Tests that run the engine against a local test server
 ```
 
-Settings and the download list are stored in the Electron user-data folder.
+## Contributing
 
-## Only download what you have the right to
+Found a bug or have an idea? [Open an issue](https://github.com/YOUR-USERNAME/blitzload/issues/new). Pull requests are welcome. Please run `npm test` first.
 
-Blitzload sends a normal browser user agent by default. Respect the terms of the sites you download from.
+## Roadmap
+
+- Capture downloads straight from your browser with an extension
+- Download scheduling
+- Optional code-signed installers
+
+## A note on downloading
+
+Only download files you have the right to download, and follow the terms of the sites you use.
 
 ## License
 
