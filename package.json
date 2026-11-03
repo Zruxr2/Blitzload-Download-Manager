@@ -1,0 +1,68 @@
+{
+  "name": "blitzload",
+  "productName": "Blitzload",
+  "version": "1.0.0",
+  "description": "A fast, resumable download manager with multi-connection downloads.",
+  "main": "main.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test",
+    "icon": "node scripts/make-icon.js",
+    "dist": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^39.0.0",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "app.blitzload.manager",
+    "productName": "Blitzload",
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**/*",
+      "renderer/**/*",
+      "assets/**/*"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.png"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "assets/icon.png",
+      "category": "public.app-category.utilities"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "assets/icon.png",
+      "category": "Network",
+      "maintainer": "Blitzload contributors"
+    }
+  },
+  "author": "Blitzload contributors",
+  "homepage": "https://github.com/YOUR-USERNAME/blitzload#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YOUR-USERNAME/blitzload.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YOUR-USERNAME/blitzload/issues"
+  },
+  "keywords": [
+    "download-manager",
+    "electron",
+    "resume",
+    "multi-connection"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}
